@@ -585,7 +585,7 @@ class ClassifierChain(MetaEstimatorMixin, ClassifierMixin, _BaseChain):
     >>> from sklearn.model_selection import train_test_split
     >>> from sklearn.multioutput import ClassifierChain
 
-    >>> X, Y = make_multilabel_classification(n_samples=12, n_classes=3, \
+    >>> X, Y = make_multilabel_classification(n_samples=12, n_classes=3,
     ...                                       random_state=0)
     >>> X_train, X_test, Y_train, Y_test = train_test_split(X, Y,
     ...                                                     random_state=0)
