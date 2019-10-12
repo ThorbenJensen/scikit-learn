@@ -130,6 +130,24 @@ class SelectFromModel(MetaEstimatorMixin, SelectorMixin, BaseEstimator):
 
     threshold_ : float
         The threshold value used for feature selection.
+
+    Examples
+    --------
+    >>> from sklearn.datasets import load_boston
+    >>> from sklearn.feature_selection import SelectFromModel
+    >>> from sklearn.linear_model import LassoCV
+
+    >>> boston = load_boston()
+    >>> X, y = boston['data'], boston['target']
+    >>> X.shape
+    (506, 10)
+    >>> clf = LassoCV(cv=5)
+    >>> sfm = SelectFromModel(estimator=clf, max_features=3)
+    >>> sfm.fit(X, y)
+    >>> sfm.transform(X).shape
+    (506, 3)
+    >>> boston.feature_names[sfm.get_support()]
+    ['RM', 'DIS', 'PTRATIO']
     """
     def __init__(self, estimator, threshold=None, prefit=False,
                  norm_order=1, max_features=None):
